@@ -1,15 +1,15 @@
-import { useAccount, useSignMessage } from "wagmi";
+import { useSignMessage } from "wagmi";
+import { contractAddress } from "~~/utils/scaffold-eth/abi";
 
 export const useSignAuthorization = () => {
-  const { address: connectedAddress } = useAccount();
   const { data: signedMessageData, signMessage, isSuccess: signingSuccessful } = useSignMessage();
 
   const signAuthorization = async () => {
     const authorizationMessage = {
       /** Address of the contract to delegate to. */
-      address: connectedAddress,
+      address: contractAddress,
       /** Chain ID. */
-      chainId: 2,
+      chainId: 31337,
       /** Nonce of the EOA to delegate to. */
       nonce: 1,
     };

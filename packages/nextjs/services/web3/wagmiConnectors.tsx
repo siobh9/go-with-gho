@@ -1,14 +1,8 @@
 import { connectorsForWallets } from "@rainbow-me/rainbowkit";
-import {
-  coinbaseWallet,
-  ledgerWallet,
-  metaMaskWallet,
-  rainbowWallet,
-  walletConnectWallet,
-} from "@rainbow-me/rainbowkit/wallets";
+import { coinbaseWallet, ledgerWallet, metaMaskWallet, rainbowWallet } from "@rainbow-me/rainbowkit/wallets";
 import scaffoldConfig from "~~/scaffold.config";
 
-const wallets = [metaMaskWallet, walletConnectWallet, ledgerWallet, coinbaseWallet, rainbowWallet];
+const wallets = [metaMaskWallet, ledgerWallet, coinbaseWallet, rainbowWallet];
 
 /**
  * wagmi connectors for the wagmi context
