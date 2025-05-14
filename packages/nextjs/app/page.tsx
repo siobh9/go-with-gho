@@ -3,11 +3,13 @@
 import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
-import { useAuthorizeAndSendTx } from "~~/hooks/scaffold-eth/useAuthorizeAndSendTx"
+import { useSignAuthorization } from "~~/hooks/scaffold-eth/useSignAuthorization"
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
-  const { authorizeAndSendTx } = useAuthorizeAndSendTx();
+  const { signAuthorization, signedMessageData, isSuccess } = useSignAuthorization();
+
+  console.log(isSuccess);
 
   return (
     <>
@@ -22,7 +24,10 @@ const Home: NextPage = () => {
             <Address address={connectedAddress} />
           </div>
           <div className="flex justify-center items-center space-x-2 flex-col">
-            <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => authorizeAndSendTx() }>Delegate to the contract!</button>
+            <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => signAuthorization() }>Sign Authorization Methods!</button>
+          </div>
+          <div className="flex justify-center items-center space-x-2 flex-col">
+            <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => signAuthorization() } disabled={!isSuccess}>Hello!</button>
           </div>
         </div>
       </div>
