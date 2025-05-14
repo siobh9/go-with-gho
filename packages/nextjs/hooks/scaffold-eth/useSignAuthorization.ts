@@ -5,6 +5,7 @@ export const useSignAuthorization = () => {
   const { data: signedMessageData, signMessage, isSuccess: signingSuccessful } = useSignMessage();
 
   const signAuthorization = async () => {
+    // TODO: break this out so it's not duped btw here and useSendAuthorizedTx
     const authorizationMessage = {
       /** Address of the contract to delegate to. */
       address: contractAddress,
