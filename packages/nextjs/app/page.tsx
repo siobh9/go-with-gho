@@ -4,12 +4,12 @@ import type { NextPage } from "next";
 import { useAccount } from "wagmi";
 import { Address } from "~~/components/scaffold-eth";
 import { useSignAuthorization } from "~~/hooks/scaffold-eth/useSignAuthorization"
+import { useSendAuthorizedTx } from "~~/hooks/scaffold-eth/useSendAuthorizedTx"
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
-  const { signAuthorization, signedMessageData, isSuccess } = useSignAuthorization();
-
-  console.log(isSuccess);
+  const { signAuthorization, signedMessageData, signingSuccessful } = useSignAuthorization();
+  const { sendAuthorizedTx } = useSendAuthorizedTx();
 
   return (
     <>
@@ -27,7 +27,7 @@ const Home: NextPage = () => {
             <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => signAuthorization() }>Sign Authorization Methods!</button>
           </div>
           <div className="flex justify-center items-center space-x-2 flex-col">
-            <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => signAuthorization() } disabled={!isSuccess}>Hello!</button>
+            <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => sendAuthorizedTx(signedMessageData !== undefined ? signedMessageData : "") } disabled={!signingSuccessful}>Hello!</button>
           </div>
         </div>
       </div>

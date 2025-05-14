@@ -5,7 +5,7 @@ import { abi, contractAddress } from "~~/utils/scaffold-eth/abi";
 
 export const useSignAuthorization = () => {
   const { address: connectedAddress } = useAccount();
-  const { data: signedMessageData, error, signMessage, variables, isSuccess } = useSignMessage();
+  const { data: signedMessageData, error, signMessage, variables, isSuccess: signingSuccessful } = useSignMessage();
 
   const signAuthorization = async () => {
     const walletClient = createWalletClient({
@@ -26,5 +26,5 @@ export const useSignAuthorization = () => {
     signMessage({message: JSON.stringify(authorizationMessage)});
   };
 
-  return { signAuthorization, signedMessageData, isSuccess };
+  return { signAuthorization, signedMessageData, signingSuccessful };
 };
