@@ -1,14 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import type { NextPage } from "next";
-import { Address as AddressType } from "viem";
 import { useAccount } from "wagmi";
-import { Address, AddressInput } from "~~/components/scaffold-eth";
+import { Address } from "~~/components/scaffold-eth";
+import { useAuthorizeAndSendTx } from "~~/hooks/scaffold-eth/useAuthorizeAndSendTx"
 
 const Home: NextPage = () => {
   const { address: connectedAddress } = useAccount();
-  const [inputAddress, setInputAddress] = useState<AddressType>();
+  const { authorizeAndSendTx } = useAuthorizeAndSendTx();
 
   return (
     <>
@@ -23,12 +22,7 @@ const Home: NextPage = () => {
             <Address address={connectedAddress} />
           </div>
           <div className="flex justify-center items-center space-x-2 flex-col">
-            <p className="my-2 font-medium">Delegate Contract:</p>
-            <AddressInput value={inputAddress ?? ""} onChange={value => setInputAddress(value as AddressType)} />
-          </div>
-          <p className="text-center text-lg" />
-          <div className="flex justify-center items-center space-x-2 flex-col">
-            <button className="btn btn-secondary btn-sm px-2 rounded-full">Delegate to {inputAddress}!</button>
+            <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => authorizeAndSendTx() }>Delegate to the contract!</button>
           </div>
         </div>
       </div>
