@@ -27,7 +27,7 @@ const Home: NextPage = () => {
             <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => signAuthorization() }>Sign Authorization Methods!</button>
           </div>
           <div className="flex justify-center items-center space-x-2 flex-col">
-            <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => sendAuthorizedTx(signedMessageData !== undefined ? signedMessageData : "") } disabled={!signingSuccessful}>Hello!</button>
+            <button className="btn btn-secondary btn-sm px-2 rounded-full" onClick={ () => sendAuthorizedTx(signedMessageData !== undefined ? signedMessageData : "") } disabled={!signingSuccessful}>Send authorized transaction!</button>
           </div>
         </div>
       </div>

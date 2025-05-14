@@ -8,7 +8,7 @@ export const useSendAuthorizedTx = () => {
 
   const sendAuthorizedTx = async (signedMessage: string) => {
     const walletClient = createWalletClient({
-      account: connectedAddress ?? '0xd698e31229aB86334924ed9DFfd096a71C686900',
+      account: connectedAddress ?? '',
       chain: sepolia,
       transport: http(),
     });

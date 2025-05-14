@@ -1,7 +1,6 @@
 import { createWalletClient, http, encodeFunctionData, Authorization, Address } from "viem";
 import { sepolia } from "viem/chains";
 import { useAccount, useSignMessage } from "wagmi";
-import { abi, contractAddress } from "~~/utils/scaffold-eth/abi";
 
 export const useSignAuthorization = () => {
   const { address: connectedAddress } = useAccount();
